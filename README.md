@@ -2,7 +2,7 @@ This is a repo where I'll put any day-to-day utilities I write.
 
 I recently made `shuffle.py` to randomize a playlist I was making for a party.
 
-`shuffle.py` takes a (text) filename as command-line argument (i.e., in `sys.argv[1]`). It expects a file in the format:
+`shuffle.py` takes a (text) filename as command-line argument (i.e., in `sys.argv[1]`). Running `python shuffle.py filename.txt` will work. It expects a file in the format:
 ```
 Some line
 Some line
