@@ -26,3 +26,10 @@ TODO
 * Refine `Py2048.render()` to better than just spitting out the NumPy array.
 * Add a GUI (maybe)
 * Make a bot that is good at playing 2048 (this was the original purpose of making this)
+
+# Py2048Bot
+
+A simple bot that plays 2048. `python Py2048Bot.py trivial` to observe the bots performance when choosing right/down alternately. `python Py2048Bot.py standard` to observe an attempt at making some nontrivial decisions (it doesn't actually work much better than the trivial).
+
+TODO
+* Add more comments (though, the code is pretty simple right now)
