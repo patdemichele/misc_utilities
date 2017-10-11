@@ -6,10 +6,11 @@ import copy
 class Py2048:
     # Initializes board to all 0's (empty).
     # Performs put operation once
-    def __init__(self):
-        self.table = np.zeros( (4,4) ) # 0 = empty square.
+    def __init__(self, length = 4):
+        self.table = np.zeros( (length,length) ) # 0 = empty square.
         self.nzeros = 16 # how many squares are currently empty?
         self.max_val = 0
+        self.length = length
         self.put()
 
     # Places either a 2 or 4 on board in a position that is currently 0
@@ -20,7 +21,7 @@ class Py2048:
         toPut = random.choice([2,4])
         if toPut > self.max_val:
             self.max_val = toPut
-        all_places = [(i,j) for i in range(4) for j in range(4)]
+        all_places = [(i,j) for i in range(self.length) for j in range(self.length)]
         place = random.choice(filter(lambda p: self.table[p] == 0, all_places))
         self.table[place] = toPut
         self.nzeros -= 1
@@ -35,11 +36,11 @@ class Py2048:
     def shift(self, check):
         retval = False # return False unless some merge happens
         # row
-        for r in range(4):
+        for r in range(self.length):
             # nonzero values from end of row to beginning
             from_end = []
             comb = False # was the last value in from_end already merged?
-            for c in range(3,-1,-1):
+            for c in range(self.length-1,-1,-1):
                 if self.table[r][c] != 0:
                     if comb or len(from_end) == 0 or self.table[r][c] != from_end[-1]:
                         from_end.append(self.table[r][c])
@@ -47,8 +48,10 @@ class Py2048:
                         from_end[-1] *= 2 # double this value
                         retval = True # we have merged at least once, so we set the retval = True
                         comb = True # indicate that we combined
+                        if not check:
+                            self.nzeros += 1 # we have one more zero because we merged something
             if not check:
-                for c in range(3,-1,-1):
+                for c in range(self.length-1,-1,-1):
                     if len(from_end) == 0:
                         self.table[r][c] = 0
                     else:
@@ -63,9 +66,9 @@ class Py2048:
     # Helpful in using decomposed shift() method in up,down,left,right methods
     def cw(self):
         copytable = copy.deepcopy(self.table)
-        for r in range(4):
-            for c in range(4):
-                self.table[r][c] = copytable[4-1-c][r]
+        for r in range(self.length):
+            for c in range(self.length):
+                self.table[r][c] = copytable[self.length-1-c][r]
 
     # Move operations.
 
