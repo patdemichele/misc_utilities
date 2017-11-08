@@ -7,7 +7,7 @@ function maxcurl
 	        if string match -r "https?://" $urlx
 	            curlx $urlx
 	        else
-	            curlx $argv[1]+$urlx
+	            echo "TODO: work on relative paths"
 	        end
         end
     end
