@@ -33,3 +33,11 @@ A simple bot that plays 2048. `python Py2048Bot.py trivial` to observe the bots 
 
 TODO
 * Add more comments (though, the code is pretty simple right now)
+
+# Curlx
+
+A modified version of the Unix `curl` command for the `fish` shell that curls a given URL and saves it in the working directory with filename `X`, where `X` is the longest suffix of the given URL that does not contain a `'/'` character. For example, `curlx http://cs229.stanford.edu/syllabus.html` is equivalent to `curl http://cs229.stanford.edu/syllabus.html > syllabus.html`.
+
+# Maxcurl
+
+Curls given URL, then performs `curlx` on all pdf files that are linked in the HTML of that URL (whether they are given with an absolute or relative path).
