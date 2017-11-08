@@ -40,4 +40,7 @@ A modified version of the Unix `curl` command for the `fish` shell that curls a 
 
 # Maxcurl
 
-Curls given URL, then performs `curlx` on all pdf files that are linked in the HTML of that URL (whether they are given with an absolute or relative path).
+Curls given URL, then performs `curlx` on all pdf files that are linked in the HTML of that URL.
+
+TODO
+* Adapt Maxcurl to work with relative paths
